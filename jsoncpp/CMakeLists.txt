@@ -1,12 +1,28 @@
 #dump_variables()
 
 # bump version here
+set(JSONCPP_WITH_TESTS              OFF)
+set(JSONCPP_WITH_POST_BUILD_UNITTEST OFF)
+set(JSONCPP_WITH_WARNING_AS_ERROR  OFF)
+set(JSONCPP_WITH_STRICT_ISO        ON)
+set(JSONCPP_WITH_PKGCONFIG_SUPPORT OFF)
+set(JSONCPP_WITH_CMAKE_PACKAGE     OFF)
+set(JSONCPP_WITH_EXAMPLE           OFF)
+set(JSONCPP_STATIC_WINDOWS_RUNTIME OFF)
+set(BUILD_SHARED_LIBS              OFF)
+set(BUILD_STATIC_LIBS              ON)
+set(BUILD_OBJECT_LIBS              OFF)
+set(STATIC_SUFFIX "_real_static")
+add_subdirectory(real_jsoncpp)
+
 set(jsoncpp_VERSION 2.5)
+
 
 define_module(LIBRARY jsoncpp=${jsoncpp_VERSION}
   DEPENDS BuildSystem>=1.15
   utility>=1.41
-  JSONCPP
+  #JSONCPP
+  jsoncpp_static
   Boost
   # NB: this module provides target with different name
   PROVIDES jsoncpp-ext
